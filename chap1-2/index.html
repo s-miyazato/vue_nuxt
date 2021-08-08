@@ -25,9 +25,12 @@
 				el: '#app',
 				data: data,
 				render: (element) => {
-					return element("p",
-					{'style':'font-size: 20px; color: red;' },
-					data.message)
+					return element("ol",
+					[
+						element("li", "item1"),
+						element("li", "item2"),
+						element("li", "item3")
+					]);
 				}
 			})
 

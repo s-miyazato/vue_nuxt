@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    {{ message }}
+  </div>
+  <hr>
+  <button onclick="doAction();">
+    Clicked
+  </button>
+
+  <script>
+    let data = {
+      message: 'Hello Vue！',
+      items: ['One', 'Two', 'Three', 'Four', 'Five']
+    };
+
+    let app = new Vue ({
+      el: '#app',
+      data: data,
+      render: (element) => {
+        let p = element("p",
+        {style:'font-size: 40px;'},
+        data.message);
+        let li = data.items.map(item=> element('li', item));
+        let ol = element("ol", li);
+        let div = element("div", [p, ol]);
+        return div;
+      }
+    })
+
+    function doAction() {
+      let newdata = [ 'いち', 'に', 'さん', 'よん', 'ご']
+      data.message = "クリックしました！！！！";
+      data.items[0] = 'ゼロ';
+      for (n in data.items) {
+        data.items[n] = newdata[n];
+      }
+    }
+
+  </script>
+</body>
+</html>

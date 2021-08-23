@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <h1>Vue.js！</h1>
+  <div id="app">
+    <p v-bind:style="styles">
+      {{ message }}
+    </p>
+  </div>
+
+  <script>
+    let data = {
+      message: 'Hello Vue！',
+      styles: {
+        margin: '10px',
+        padding: '5px 20px',
+        fontSize: '20pt',
+        color: 'red',
+        backgroundColor: '#fee',
+        border: '3px solid blue'
+      }
+    };
+
+    let app = new Vue ({
+      el: '#app',
+      data: data
+    });
+  </script>
+</body>
+</html>

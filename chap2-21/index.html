@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    table tr th {
+      font-size: 16pt;
+      color: white;
+      background: blue;
+      padding: 5px 15px;
+    }
+    table tr td {
+      font-size: 16px;
+      color: gray;
+      border: 1px solid gray;
+      padding: 5px 15px;
+    }
+  </style>
+
+  <h1>Vue.js！</h1>
+  <div id="app">
+    <p>※データをテーブル表示する</p>
+    <table>
+      <tr>
+        <th>name</th>
+        <th>mail</th>
+        <th>tel</th>
+      </tr>
+      <tr v-for="item in items">
+        <td>{{ item.name }}</td>
+        <td>{{item.mail}}</td>
+        <td>{{item.tel}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    let data = {
+      items: [
+        {name:'Taro', mail: 'taro@yamada', tel:'999-999'},
+        {name:'Hanako', mail: 'hanako@flower', tel:'888-888-888'},
+        {name:'Sachiko', mail: 'sachiko@happy', tel:'777-777'},
+        {name:'Jiro', mail: 'jiro@change', tel:'666-666'},
+        {name:'mami', mail: 'mami@mumemo', tel:'555-555'},
+      ]
+    }
+
+    let app = new Vue({
+      el: '#app',
+      data: data
+    })
+  </script>
+</body>
+</html>

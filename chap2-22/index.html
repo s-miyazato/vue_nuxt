@@ -28,11 +28,13 @@
     <p>※データをテーブル表示する</p>
     <table>
       <tr>
+        <th>ID</th>
         <th>name</th>
         <th>mail</th>
         <th>tel</th>
       </tr>
       <tr v-for="(item, id) in items">
+        <td>{{id}}</td>
         <td>{{ item.name }}</td>
         <td>{{item.mail}}</td>
         <td>{{item.tel}}</td>

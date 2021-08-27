@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My first vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      .hello {
+        font-size: 20pt;
+        font-weight: bold;
+        border: 1px solid magenta;
+        padding: 5px 10px 0 10px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Vue.js！</h1>
+    <div id="app">
+      <div><hello v-bind:name="name" /></div>
+      <div><input type="text" v-model="name"></div>
+    </div>
+  </body>
+
+  <script>
+    let hello = Vue.component('hello',
+    {
+      props:['name'],
+      template: '<p class="hello">Hello,{{name}}！</p>'
+    })
+
+    let app = new Vue ({
+      el: '#app',
+      data: {
+        name:'no-name'
+      }
+    });
+  </script>
+</html>

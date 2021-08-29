@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My first vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+
+  <body>
+    <style>
+      .hello {
+        font-size: 20pt;
+        font-weight: bold;
+        border: 1px solid magenta;
+        padding: 5px 10px 0 10px;
+        margin: 10px;
+      }
+      .red {
+        color: white;
+        background: red;
+      }
+    </style>
+
+    <h1>Vue.js！</h1>
+    <div id="app">
+      <hello />
+    </div>
+
+    <script>
+      Vue.component('hello', {
+        data:function() {
+          return {
+            num:0,
+            message:'type a number.',
+          };
+        },
+        methods: {
+          calc: function(event) {
+            let total = 0;
+            for (var i = 1; i <= this.num; i++) {
+              total += i;
+            }
+            this.message = "total: " + total;
+          },
+        },
+          template: '<div><p class="hello">{{message}}</p><div><input type="number" v-on:input="calc" v-model="num"></div></div>',
+      });
+
+      let app = new Vue({
+        el:'#app'
+      });
+    </script>
+  </body>
+</html>

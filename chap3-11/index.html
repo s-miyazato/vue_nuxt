@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My first vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+
+  <body>
+    <style>
+      .hello {
+        font-size: 20pt;
+        font-weight: bold;
+        border: 1px solid magenta;
+        padding: 5px 10px 0 10px;
+        margin: 10px;
+      }
+      .red {
+        color: white;
+        background: red;
+      }
+    </style>
+
+    <h1>Vue.js！</h1>
+    <div id="app">
+      <div><hello /></div>
+      <div><hello /></div>
+      <div><hello /></div>
+    </div>
+
+    <script>
+      let app = new Vue({
+        el: '#app',
+        components: {
+          hello: {
+            data:function() {
+              return {
+                counter: 0,
+              };
+            },
+            template: '<p v-on:click="counter++;" class="hello">clicked: {{counter}}.</p>',
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

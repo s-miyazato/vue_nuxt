@@ -14,14 +14,14 @@
 
 <script>
 export default {
-  name: 'calc',
+  name: 'Calc',
   props: {
     title: String,
   },
-  data: function() {
+  data:function(){
     return {
-      message: 'Enter expression：',
-      fomula: '0',
+      message: 'Enter expression:',
+      fomula:'0',
     };
   },
   methods: {
@@ -34,8 +34,8 @@ export default {
           fn += 'var' + arr[n] + ';';
         }
       }
-      fn += 'return' + last + ';';
-      let exp = 'function f() {' + fn + '} f()';
+      fn += 'return ' + last + ';';
+      let exp = 'function f() {' + fn + '} f();';
       let ans = eval(exp);
       this.message = 'answer：' + ans;
       let re = arr.join(';').trim();

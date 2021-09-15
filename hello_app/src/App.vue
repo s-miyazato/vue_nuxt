@@ -3,7 +3,20 @@
     <Calc v-bind:title="message" v-on:result-event="appAction" />
     <hr>
     <div>
-      <table v-html="log"></table>
+      <table>
+        <tr>
+          <th class="head">Expression</th>
+          <th class="head">Value</th>
+          <th class="head">btn</th>
+        </tr>
+        <tr v-for="(result,i) in results" :key="result">
+          <td>{{ result[0] }}</td>
+          <td>{{ result[1] }}</td>
+          <td>
+            <button v-on:click="remove(i)">clear</button>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -20,36 +33,37 @@ export default {
   data: function() {
     return {
       message: 'CALC',
-      result: [],
+      results: [],
     };
   },
 
-  computed: {
-    log: function() {
-      let table = '<tr><th class="head">Expression</th><th class="head">Value</th></tr>';
-      for(let i in this.result) {
-        table += '<tr><td>' + this.result[i][0] + '</td><th>' + this.result[i][1] + '</th></tr>';
-      }
-      return table;
-    }
-  },
   
   created: function() {
     let items = localStorage.getItem('log');
+    if (!items) return
     let logs = JSON.parse(items);
     if (logs != null) {
-      this.result = logs;
+      this.results = logs;
     }
   },
 
   methods: {
     appAction: function(exp, res) {
-      this.result.unshift([exp,res]);
-      if (this.result.length > 10) {
-        this.result.pop();
+      this.results.unshift([exp,res]);
+      if (this.results.length > 10) {
+        this.results.pop();
       }
+      this.setLocalStorage()
+    },
 
-      let log = JSON.stringify(this.result);
+    remove: function(i) {
+      this.results.splice(i,1)
+      //localStorage.removeItem('log')
+      this.setLocalStorage()
+    },
+
+    setLocalStorage: function() {
+      let log = JSON.stringify(this.results);
       localStorage.setItem('log', log);
     }
   }

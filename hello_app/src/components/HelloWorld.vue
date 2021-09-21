@@ -3,10 +3,9 @@
     <h1>{{ title }}</h1>
     <p>{{ message }}</p>
     <hr>
-    <div>
-      <input type="text" v-model="input">
-      <button v-on:click="doAction">Click</button>
-    </div>
+    <p>val: {{ val }}</p>
+    <div>*2： <input type="number" v-model="a" name="" id=""></div>
+    <div>^2： <input type="number" v-model="b" name="" id=""></div>
   </div>
 </template>
 
@@ -18,16 +17,32 @@ export default {
   },
   data:function() {
     return {
-      message: 'お名前は？',
-      input: 'no name',
+      message: 'バリデーションチェック',
+      val: 0,
     };
   },
-  methods: {
-    doAction: function() {
-      this.message = 'こんにちは' + this.input + 'さん！';
-      this.$emit('result-event', this.input);
-    }
-  }
+
+  computed: {
+    a: {
+      get: function() {
+        return this.val * 2;
+      },
+      set: function(value) {
+        return this.val = Math.floor( value / 2);
+      },
+    },
+    b: {
+      get: function() {
+        return this.val * this.val;
+      },
+      set:function(value) {
+        this.val = Math.floor(Math.sqrt(value));
+      },
+    },
+  },
+  created: function() {
+    this.val = 10;
+  },
 }
 </script>
 

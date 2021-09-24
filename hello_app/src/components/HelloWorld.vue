@@ -1,41 +1,53 @@
 <template>
   <div class="hello">
     <h1>{{ title }}</h1>
-    <pre v-on:click="clear">{{ message }}</pre>
+    <pre>{{ message }}</pre>
     <hr>
     <div>
-      <input type="text" v-on:keydown="type" name="" id="">
+      <input type="text"
+        v-on:keypress="type"
+        v-on:keydown.delete="clear"
+        v-on:keydown.space="space"
+        v-on:keydown.enter="enter">
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name:'HelloWorld',
-  props: {
-    title:String,
-  },
-
-  data: function() {
-    return {
-      message: '',
-    };
-  },
-
-  methods: {
-    type: function(event) {
-      this.message += event.key + '';
-      if (event.key == "Escape") {
-        this.message = '';
-      }
-      event.target.value = '';
+  export default {
+    name:'HelloWorld',
+    props: {
+      title:String,
     },
 
-    clear: function() {
-      this.message = '';
-    }
-  },
-}
+    data: function() {
+      return {
+        message: '',
+      };
+    },
+
+    methods: {
+      type: function(event) {
+        if (event.key == 'Enter') { return; }
+          this.message += event.key + ' ';
+          event.target.value = '';
+      },
+
+      clear: function() {
+        this.message = '';
+      },
+
+      space: function() {
+        this.message += '＿';
+      },
+
+      enter: function(event) {
+        let res = this.message.split(' ').join('')
+          this.message = res.split('＿').join(' ');
+          event.target.value = '';
+      }
+    },
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

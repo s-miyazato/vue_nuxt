@@ -3,13 +3,13 @@
     <h1>{{ title }}</h1>
     <pre>{{ message }}</pre>
     <hr>
-    <div>
-      <input type="text"
-        v-on:keypress="type"
-        v-on:keydown.delete="clear"
-        v-on:keydown.space="space"
-        v-on:keydown.enter="enter"
-      >
+    <div class="area"
+      v-on:click="click"
+      v-on:click.exact="exact"
+      v-on:click.shift ="shift"
+      v-on:click.ctrl="ctrl"
+      v-on:click.alt="alt"
+    > click hear！
     </div>
   </div>
 </template>
@@ -29,25 +29,25 @@
 
     methods: {
 
-      type: function(event) {
-        if (event.key == 'Enter') { return; }
-        this.message += event.key + ' ';
-        event.target.value = '';
+      click: function() {
+        this.message = 'click';
       },
 
-      clear: function() {
-        this.message = ' ';
+      exact: function() {
+        this.message += '** no any key **';
       },
 
-      space: function() {
-        this.message += '_';
+      shift: function() {
+        this.message += '[shift]';
       },
 
-      enter: function(event) {
-        let res = this.message.split(' ').join(' ')
-        this.message = res.split('_').join(' ');
-        event.target.value = '';
-      }
+      ctrl: function() {
+        this.message += '[ctrl]';
+      },
+
+      alt: function() {
+        this.message += '[alt]';
+      },
 
     },
   }
@@ -55,6 +55,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.area {
+  width: 300px;
+  height: 100px;
+  background-color: #ddd;
+  padding: 10px;
+  font-size: 20pt;
+}
+
+.area:hover {
+  cursor: pointer;
+}
+
 div {
   margin: 0;
   padding: 0;

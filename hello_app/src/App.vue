@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="app">
-      <HelloWorld title="message" />
+      <HelloWorld v-bind:title="message" />
     </div>
   </div>
 </template>

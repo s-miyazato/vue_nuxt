@@ -8,16 +8,17 @@
         v-on:keypress="type"
         v-on:keydown.delete="clear"
         v-on:keydown.space="space"
-        v-on:keydown.enter="enter">
+        v-on:keydown.enter="enter"
+      >
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name:'HelloWorld',
+    name: 'HelloWorld',
     props: {
-      title:String,
+      title: String,
     },
 
     data: function() {
@@ -27,25 +28,27 @@
     },
 
     methods: {
+
       type: function(event) {
         if (event.key == 'Enter') { return; }
-          this.message += event.key + ' ';
-          event.target.value = '';
+        this.message += event.key + ' ';
+        event.target.value = '';
       },
 
       clear: function() {
-        this.message = '';
+        this.message = ' ';
       },
 
       space: function() {
-        this.message += '＿';
+        this.message += '_';
       },
 
       enter: function(event) {
-        let res = this.message.split(' ').join('')
-          this.message = res.split('＿').join(' ');
-          event.target.value = '';
+        let res = this.message.split(' ').join(' ')
+        this.message = res.split('_').join(' ');
+        event.target.value = '';
       }
+
     },
   }
 </script>

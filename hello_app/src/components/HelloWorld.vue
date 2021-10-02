@@ -3,14 +3,7 @@
     <h1>{{ title }}</h1>
     <pre>{{ message }}</pre>
     <hr>
-    <div class="area"
-      v-on:click="click"
-      v-on:click.exact="exact"
-      v-on:click.shift ="shift"
-      v-on:click.ctrl="ctrl"
-      v-on:click.alt="alt"
-    > click hear！
-    </div>
+    <ol><slot /></ol>
   </div>
 </template>
 
@@ -23,32 +16,8 @@
 
     data: function() {
       return {
-        message: '',
+        message: 'This message ',
       };
-    },
-
-    methods: {
-
-      click: function() {
-        this.message = 'click';
-      },
-
-      exact: function() {
-        this.message += '** no any key **';
-      },
-
-      shift: function() {
-        this.message += '[shift]';
-      },
-
-      ctrl: function() {
-        this.message += '[ctrl]';
-      },
-
-      alt: function() {
-        this.message += '[alt]';
-      },
-
     },
   }
 </script>
@@ -127,4 +96,11 @@ div.in {
 div.in:hover {
   cursor: pointer;
 }
+
+p.inner {
+  color: red;
+  font-size: 14pt;
+}
+
+
 </style>

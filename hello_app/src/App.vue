@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <div id="app">
-      <HelloWorld v-bind:title="message" />
+      <HelloWorld title="slot">
+        <li
+          v-for="obj in slotobjs"
+          v-bind:key="obj.name">
+          {{ obj.name }} ({{ obj.mail }})
+        </li>
+      </HelloWorld>
     </div>
   </div>
 </template>
@@ -17,8 +23,11 @@ export default {
 
   data: function() {
     return {
-      message: 'validate',
-      num: 160,
+      slotobjs: [
+        {name: 'Taro', mail:'taro@yamada'},
+        {name: 'Hanako', mail:'hanako@flower'},
+        {name: 'Sachiko', mail:'sachiko@happy'},
+      ]
     };
   },
 
@@ -49,4 +58,5 @@ tr th.head {
   background: black;
   color: white;
 }
+
 </style>

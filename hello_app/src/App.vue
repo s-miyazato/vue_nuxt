@@ -1,14 +1,8 @@
 <template>
   <div id="app">
-    <div id="app">
-      <HelloWorld title="slot">
-        <li
-          v-for="obj in slotobjs"
-          v-bind:key="obj.name">
-          {{ obj.name }} ({{ obj.mail }})
-        </li>
-      </HelloWorld>
-    </div>
+    <HelloWorld title="slot">
+      <p class="inner">***this is default text***</p>
+    </HelloWorld>
   </div>
 </template>
 
@@ -58,5 +52,6 @@ tr th.head {
   background: black;
   color: white;
 }
+
 
 </style>

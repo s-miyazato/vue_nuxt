@@ -1,25 +1,25 @@
 <template>
   <div class="hello">
     <h1>{{ title }}</h1>
-    <pre>{{ message }}</pre>
+    <p>{{ message }}</p>
     <hr>
-    <ol><slot /></ol>
+    <slot />
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'HelloWorld',
-    props: {
-      title: String,
-    },
 
-    data: function() {
-      return {
-        message: 'This message ',
-      };
-    },
-  }
+<script>
+export default {
+  name: 'HelloWorld',
+  props: {
+    title: String, 
+  },
+  data: function(){
+    return {
+      message: 'This is message.',
+    };
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -97,7 +97,7 @@ div.in:hover {
   cursor: pointer;
 }
 
-p.inner {
+.inner {
   color: red;
   font-size: 14pt;
 }
